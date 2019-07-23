@@ -1,0 +1,57 @@
+package com.br.zup.estacionamento.teste;
+
+import java.sql.Date;
+import java.util.Calendar;
+import java.util.Scanner;
+
+import com.br.zup.estacionamento.modelo.Caixa;
+import com.br.zup.estacionamento.modelo.Carro;
+
+public class App {
+
+	private static final int String = 0;
+	private static java.util.Date calendario1;
+
+	public static void main(String[] args) throws InterruptedException {
+		Scanner entrada = new Scanner(System.in);
+		Caixa caixa = new Caixa();
+		Carro carroZup  = new Carro();
+		
+		
+		Calendar calendario = Calendar.getInstance();
+		System.out.println("Insira o dia: ");
+		calendario.set(Calendar.DAY_OF_MONTH, entrada.nextInt());
+		System.out.println("Insira o mês: ");
+		calendario.set(Calendar.MONTH, entrada.nextInt());
+		System.out.println("Insira o ano: ");
+		calendario.set(Calendar.YEAR, entrada.nextInt());
+		System.out.println("Insira a hora e os minutos: ");
+		calendario.set(Calendar.HOUR_OF_DAY, entrada.nextInt());
+		System.out.println("insira os minutos: ");
+		calendario.set(Calendar.MINUTE, entrada.nextInt());
+		
+		Date saida;
+		
+		carroZup.setEntrada(calendario.getTime());
+		System.out.println("O Carro da Zup entrou: " + carroZup.getEntrada());
+		
+		Date d = (Date) calendario.getTime();
+		java.util.Date d1 = calendario.getTime();
+		
+		System.out.println(d.getTime());
+		System.out.println(d1.getTime());
+		
+		long milseg = d1.getTime() - d.getTime();
+		long seg   = milseg/1000;
+		double min   = seg/60;
+		double hora  = min/60;
+		@SuppressWarnings("unused")
+		double dias  = hora/24;
+		
+		
+		
+		
+
+	}
+
+}

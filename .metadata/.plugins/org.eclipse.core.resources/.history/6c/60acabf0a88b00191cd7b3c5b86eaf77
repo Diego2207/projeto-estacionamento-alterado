@@ -1,0 +1,50 @@
+package com.br.zup.estacionamento.teste;
+
+import java.util.Calendar;
+import java.util.Scanner;
+
+import com.br.zup.estacionamento.modelo.Caixa;
+import com.br.zup.estacionamento.modelo.Carro;
+
+public class App {
+
+	private static final int String = 0;
+
+	public static void main(String[] args) throws InterruptedException {
+		Scanner entrada = new Scanner(System.in);
+		Caixa caixa = new Caixa();
+		Carro carroZup  = new Carro();
+		
+		
+		Calendar calendario = Calendar.getInstance();
+		System.out.println("Insira o dia: ");
+		calendario.set(Calendar.DAY_OF_MONTH, entrada.nextInt());
+		System.out.println("Insira o mês: ");
+		calendario.set(Calendar.MONTH, entrada.nextInt());
+		System.out.println("Insira o ano: ");
+		calendario.set(Calendar.YEAR, entrada.nextInt());
+		System.out.println("Insira a hora e os minutos: ");
+		calendario.set(Calendar.HOUR_OF_DAY, entrada.nextInt());
+		System.out.println("insira os minutos: ");
+		calendario.set(Calendar.MINUTE, entrada.nextInt());
+		
+		
+		carroZup.setEntrada(calendario.getTime());
+		System.out.println("O Carro da Zup entrou: " + carroZup.getEntrada());
+		
+		
+		Carro c = new Carro();
+		System.out.println("Carro Entrada " + c.getEntrada());
+		System.out.println("Carro Saida " + c.getSaida());
+		
+		c.setEntrada(Calendar.getInstance().getTime());
+		Thread.sleep(0);;//Parando o programa por 1 seg
+		c.setSaida(Calendar.getInstance().getTime());
+		
+		System.out.println("Carro Entrada " + c.getEntrada());
+		System.out.println("Carro Saida " + c.getSaida());
+		
+
+	}
+
+}

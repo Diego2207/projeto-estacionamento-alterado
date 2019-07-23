@@ -1,0 +1,90 @@
+package com.br.zup.estacionamento.teste;
+
+import java.sql.Date;
+import java.util.Calendar;
+import java.util.Scanner;
+
+import com.br.zup.estacionamento.modelo.Caixa;
+import com.br.zup.estacionamento.modelo.Carro;
+import com.br.zup.estacionamento.modelo.Moto;
+
+public class App {
+
+	private static final int String = 0;
+	private static java.util.Date calendario1;
+
+	public static void main(String[] args) throws InterruptedException {
+		Scanner entrada = new Scanner(System.in);
+		Caixa caixa = new Caixa();
+		System.out.println("Insira o modelo: ");
+		String modelo = entrada.next();
+		System.out.println("insira a placa: ");
+		String placa = entrada.next();
+		Carro carroZup  = new Carro(modelo, placa);
+		Moto motoZup = new Moto(modelo, placa);
+		
+		Calendar calendario = Calendar.getInstance();
+		System.out.println("Insira o dia: ");
+		calendario.set(Calendar.DAY_OF_MONTH, entrada.nextInt());
+		System.out.println("Insira o mês: ");
+		calendario.set(Calendar.MONTH, entrada.nextInt());
+		System.out.println("Insira o ano: ");
+		calendario.set(Calendar.YEAR, entrada.nextInt());
+		System.out.println("Insira a hora : ");
+		calendario.set(Calendar.HOUR_OF_DAY, entrada.nextInt());
+		System.out.println("insira os minutos: ");
+		calendario.set(Calendar.MINUTE, entrada.nextInt());
+		
+		
+		carroZup.setEntrada(calendario.getTime());
+		System.out.println("O Carro da Zup entrou: " + carroZup.getEntrada());
+		
+		
+		Carro carroZup1 = new Carro("", "");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Que dia voce entrou? ");
+		byte dia = sc.nextByte();
+		System.out.println("Que hora voce entrou? ");
+		byte hora = sc.nextByte();
+		System.out.println("Que min voce entrou? ");
+		byte min = sc.nextByte();
+		
+		Calendar calendarioMoto = Calendar.getInstance();
+		calendarioMoto.set(Calendar.DAY_OF_MONTH, dia);
+		calendarioMoto.set(Calendar.HOUR_OF_DAY, hora);
+		calendarioMoto.set(Calendar.MINUTE, min);
+		
+		carroZup1.setEntrada(calendarioMoto.getTime());
+		System.out.println("A moto entrou as " + carroZup.getEntrada());
+		
+		//Pegando dados da saida
+		System.out.println("Que dia voce saiu? ");
+		dia = sc.nextByte();
+		System.out.println("Que hora voce saiu? ");
+		hora = sc.nextByte();
+		System.out.println("Que min voce saiu? ");
+		min = sc.nextByte();
+		
+		calendarioMoto.set(Calendar.DAY_OF_MONTH, dia);
+		calendarioMoto.set(Calendar.HOUR_OF_DAY, hora);
+		calendarioMoto.set(Calendar.MINUTE, min);
+		
+		carroZup.setSaida(calendarioMoto.getTime());
+		System.out.println("A o carro saiu as " + carroZup.getSaida());
+		
+		
+		long tempoNoShopping = (long)caixa.calcularTempoParadoNoEstacionamento(carroZup.getEntrada(), carroZup.getSaida());
+		System.out.println("A Moto ficou " + tempoNoShopping + " minutos");
+		//Mostrar quanto custou a saida
+		double valorPago = caixa.calcularQuantoVouPagarNoEstacionamento(tempoNoShopping);
+		System.out.println("Foi pago o valor de " + valorPago);
+
+		
+		
+		sc.close();
+
+		
+		
+	}
+
+}

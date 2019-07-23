@@ -1,0 +1,33 @@
+package com.br.zup.estacionamento.teste;
+
+import java.util.Calendar;
+import java.util.Scanner;
+
+import com.br.zup.estacionamento.modelo.Caixa;
+import com.br.zup.estacionamento.modelo.Carro;
+
+public class App {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		Caixa caixa = new Caixa();
+		Carro carroZup  = new Carro();
+		
+		
+		Calendar calendario = Calendar.getInstance();
+		calendario.set(Calendar.DAY_OF_MONTH, entrada.nextInt());
+		calendario.set(Calendar.MONTH, entrada.nextInt());
+		calendario.set(Calendar.YEAR, entrada.nextInt());
+		calendario.set(Calendar.HOUR_OF_DAY, entrada.nextInt());
+		calendario.set(Calendar.MINUTE, entrada.nextInt());
+		calendario.set(Calendar.SECOND, entrada.nextInt());
+		calendario.set(Calendar.MILLISECOND, entrada.nextInt());
+		
+		
+		carroZup.setEntrada(calendario.getTime());
+		System.out.println("O Carro da Zup entrou: " + carroZup.getEntrada());
+		
+
+	}
+
+}

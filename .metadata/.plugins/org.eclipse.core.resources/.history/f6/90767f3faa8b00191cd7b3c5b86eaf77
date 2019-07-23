@@ -1,0 +1,22 @@
+package com.br.zup.estacionamento.modelo;
+
+import java.util.Date;
+
+public class Veiculo {
+
+	private Date entrada;
+	private int saida;
+	
+	public Date getEntrada() {
+		return entrada;
+	}
+	public void setEntrada(Date entrada) {
+		this.entrada = entrada;
+	}
+	public int getSaida() {
+		return saida;
+	}
+	public void setSaida(int saida) {
+		this.saida = saida;
+	}
+}
